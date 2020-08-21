@@ -1,5 +1,6 @@
 import telebot
 import config
+import parser_Y_W as weather
 import json as js
 
 data = {}
@@ -47,6 +48,10 @@ def sett(message):
 @bot.message_handler(commands = ['status'])
 def stat(message):
     bot.send_message(message.chat.id, get_stat())
+
+@bot.message_handler(commands = ['weather'])
+def stat(message):
+    bot.send_message(message.chat.id, weather.get(data['TOWN']))
 
 @bot.message_handler(content_types = 'text')
 def set(message):
